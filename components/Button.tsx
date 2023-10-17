@@ -1,4 +1,7 @@
+"use client"
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 
 type ButtonProps = {
   type: 'button' | 'submit';
@@ -9,8 +12,15 @@ type ButtonProps = {
 }
 
 const Button = ({ type, title, icon, variant, full }: ButtonProps) => {
+  const router = useRouter();
+
+  function handleLog(){
+    router.push("/login")
+  }
   return (
+
     <button
+    onClick={handleLog}
     className={`flexCenter gap-3 rounded-full border ${variant} ${full && 'w-full'}`}
       type={type}
     >
