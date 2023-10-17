@@ -36,10 +36,9 @@ export const options: NextAuthOptions = {
                     throw new Error("Invalid Credentials")
                 }          
                 
-                let newUser:IUser = {FirstName:user.FirstName,
+                let newUser:IUser = {
                     username:user.username,
                     email:user.email,
-                    isAuth:user.isAuth,
                     id:user._id,
                 }
                 
