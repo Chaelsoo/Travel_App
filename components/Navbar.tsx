@@ -45,7 +45,8 @@ const Navbar = () => {
             {link.label}
           </Link>
         ))}
-                {session ? "" :
+                {// @ts-ignore
+                session?.user ? "" :
         <Button 
           type="button"
           title="Login"
@@ -78,7 +79,9 @@ const Navbar = () => {
             {link.label}
           </Link>
         ))}
-                {session ? "" :
+        
+        {// @ts-ignore
+        session?.user ? "" :
         <Button 
           type="button"
           title="Login"
