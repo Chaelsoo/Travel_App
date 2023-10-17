@@ -7,6 +7,7 @@ import { useState } from "react"
 import Button from "./Button"
 import { useEffect } from "react"
 import axios from "axios"
+import { signOut } from "next-auth/react"
 
 const Navbar = () => {
   const [show,setShow] = useState(false)
@@ -15,6 +16,10 @@ const Navbar = () => {
 
   function handleShow(){
     setShow(!show)
+  }
+  function handleLogOut(e:any){
+    e.preventDefault()
+    signOut()
   }
 
   useEffect(()=>{
@@ -46,7 +51,12 @@ const Navbar = () => {
           </Link>
         ))}
                 {// @ts-ignore
-                session?.user ? "" :
+                session?.user ? <span onClick={handleLogOut}>  <Button 
+                type="button"
+                title="LogOut"
+                icon="/user.svg"
+                variant="btn_dark_green"
+              /> </span>:
         <Button 
           type="button"
           title="Login"
@@ -81,7 +91,12 @@ const Navbar = () => {
         ))}
         
         {// @ts-ignore
-        session?.user ? "" :
+        session?.user ? <span onClick={handleLogOut}>  <Button 
+        type="button"
+        title="LogOut"
+        icon="/user.svg"
+        variant="btn_dark_green"
+      /> </span> :
         <Button 
           type="button"
           title="Login"
